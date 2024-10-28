@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Randomly Shaking Text</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+  <style>
+    @keyframes shake {
+      0% { transform: translate(0, 0); }
+      10% { transform: translateX(-10px) translateY(-10px); }
+      20% { transform: translateX(10px) translateY(10px); }
+      30% { transform: translateX(-10px) translateY(10px); }
+      40% { transform: translateX(10px) translateY(-10px); }
+      50% { transform: translateX(-10px) translateY(-10px); }
+      60% { transform: translateX(10px) translateY(10px); }
+      70% { transform: translateX(-10px) translateY(10px); }
+      80% { transform: translateX(10px) translateY(-10px); }
+      90% { transform: translateX(-10px) translateY(-10px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    html {
+      background-image: url(https://media1.tenor.com/m/Yukn1L29GSUAAAAC/giygas-earthbound.gif);
+    }
+
+    .shaky-text {
+      font-family: "Creepster", system-ui;
+      color: white;
+      font-size: large;
+    }
+  </style>
+</head>
+<body>
+  <a href="https://www.numberonecarpetcleaning.co.uk/wp-content/uploads/2021/06/BloodStainOnCarpet-2048x1365.jpeg">
+  <p id="myText" class="shaky-text" style="font-size:100px;">YOU!</p>
+</a>
+  <script>
+    function shakeText(element) {
+      const shakeAmount = 10;
+      const duration = 100;
+
+      element.style.animation = `shake ${duration}ms`;
+
+      setTimeout(() => {
+        element.style.animation = '';
+      }, duration);
+    }
+
+    function randomShake() {
+      const randomX = Math.floor(Math.random() * (shakeAmount * 2 + 1)) - shakeAmount;
+      const randomY = Math.floor(Math.random() * (shakeAmount * 2 + 1)) - shakeAmount;
+
+      return `translate(${randomX}px, ${randomY}px)`;
+    }
+
+    const textElement = document.getElementById('myText');
+
+    const textList = ["DIE", "I KNOW YOUR SECRETS", "SUBMIT YOURSELF TO DESPAIR", "I KnOw wHerE yOU lllIivvve", "GivEE mEEE tHHEIrrrr SSSSSOOOULLLS!!"];
+
+    function randomText() {
+      const randomIndex = Math.floor(Math.random() * textList.length);
+      textElement.textContent = textList[randomIndex];
+    }
+
+    // Initial shake and text
+    shakeText(textElement);
+    randomText();
+
+    // Continuously shake and change text randomly
+    setInterval(() => {
+  shakeText(textElement);
+}, 25); // Shake every 500 milliseconds
+
+setInterval(() => {
+  randomText();
+}, 2000); // Change text every 2 seconds
+  </script>
+</body>
+</html>
