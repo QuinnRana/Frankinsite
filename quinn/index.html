@@ -1,49 +1,113 @@
-<doctype.html!>
-<html>
-    <style>     
-    p {
-      color: #21DAE1;
-    }
+ 
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Music Note Effect with Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+        canvas {
+            display: block;
+        }
+        #formContainer {
+            display: none;
+            padding: 20px;
+            background-color: white;
+        }
     </style>
-    <head>
-   
-    </head>
-    <body>
-       <div class="livemusic">
-           <img src="https://media.blogto.com/articles/20180624-dreamsfest-49_preview.jpeg?w=1200&cmd=resize_then_crop&height=630&quality=70" alt="live music" />
-           <h1 style="color: cyan">
-              Whether you are a <em><strong>seller</strong></em> or just an avid <em><strong>collector of all things music
-              </strong></em>, this is your community. Just some items you might find here are Autographed artist memorabilia,vintage and modern artist and 
-              band tees, Vinyls, CD's, cassettes, 8-tracks, Concert pictures or any music ephemra. Come Jam with us!
-           </h1>
-       </div>
-      <br>
-      <a href="https://district.net/supportlivemusic"><button class="favorite styled" type="button">
-        <h4><em><strong>Support Live Music!</strong></em></h4>
-      </a>
-        <br>
-        <h2>Let's rock on guys</h2>
-  
-        <p style="color: blue">my kid who is attending UIW made this site for us and we are so proud of him</p>
-        <p style="color: blue">my kid who is attending UIW made this site for us and we are so proud of him</p>
-        <p style="color: blue">my kid who is attending UIW made this site for us and we are so proud of him</p>
-        <p> Im am the hexcode color</p>
+</head>
+<body>
+<canvas id="matrixCanvas"></canvas>
 
-        <form action="http://api.quinnrana.com/submit" method="POST">
-            <!-- Name input -->
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <br><br>
+<div id="formContainer" class="container text-center"style="display: none; padding: 20px; background-color: white; background-image: url('https://imgs.6sqft.com/wp-content/uploads/2021/07/13123945/The-Rooftop-at-Pier-17-concert.jpg'); background-size: cover; background-position: center; border-radius: 10px;">
+    <div class="livemusic">
+      
+      <h1 style="color: cyan">
+         Whether you are a <em><strong>seller</strong></em> or just an avid <em><strong>collector of all things music
+         </strong></em>, this is your community. Just some items you might find here are Autographed artist memorabilia,vintage and modern artist and 
+         band tees, Vinyls, CD's, cassettes, 8-tracks, Concert pictures or any music ephemra. Come Jam with us!
+      </h1>
+  </div>
+ <br>
+ <a href="https://district.net/supportlivemusic"><button class="favorite styled" type="button">
+   <h4><em><strong>Support Live Music!</strong></em></h4>
+ </a>
+    <form action="http://api.quinnrana.com/submit" method="POST">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+        </div>
+        <div class="mb-3">
+            <label for="id" class="form-label">Student ID</label>
+            <input type="text" class="form-control" id="id" placeholder="Enter your student ID">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 
-            <!-- Email input -->
-            <label for="id">Student ID:</label>
-            <input type="text" id="id" name="email" required>
-            <br><br>
+<script>
+    const canvas = document.getElementById("matrixCanvas");
+    const ctx = canvas.getContext("2d");
+    const formContainer = document.getElementById("formContainer");
 
-            <!-- Submit button -->
-            <input type="submit" value="Submit">
-        </form>
+    // Set canvas to full screen
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-        <a href="http://quinnrana.com/form-submissions-log"> View submissions </a>
-    </body>
-</html> 
+    // Unicode characters for musical notes
+    const musicNotes = "♩♪♫♬♭♮♯";
+    const fontSize = 30;
+    const columns = canvas.width / fontSize;
+    
+    // An array to store the y-position of each column's text
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    // Draw the characters
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#0F0";
+        ctx.font = fontSize + "px monospace";
+
+        drops.forEach((y, index) => {
+            const text = musicNotes.charAt(Math.floor(Math.random() * musicNotes.length));
+            ctx.fillText(text, index * fontSize, y * fontSize);
+
+            if (y * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[index] = 0;
+            }
+            drops[index]++;
+        });
+    }
+
+    // Animate
+    const interval = setInterval(drawMatrix, 50);
+
+    // Stop Matrix effect after 5 seconds and show form
+    setTimeout(() => {
+        clearInterval(interval);
+        canvas.style.display = "none";
+        formContainer.style.display = "block";
+    }, 5000);
+
+    // Resize canvas when window is resized
+    window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        drops.length = Math.floor(columns);
+        drops.fill(1);
+    });
+</script>
+</body>
+</html>
