@@ -1,1 +1,164 @@
-Hello NitroStOrM7
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F̸̠̽R̶͙̝̖͛͌͒͠A̸̘̫̞͖̓̏͂̔͠N̸̨̨̙̻̳͐̀̚͝K̶̨͎̿͑͝͝Ḙ̸̛͓̦̬̉̍N̷͓̦̆̈́́̍S̵͈͈̬̀̓ͅǏ̵͉͠T̷̛̤̠̦̠̒͊̕͝È̸̛͓͇͓̬̆̊</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            height: 100vh; width: 100vw; background: black; color: #00FF00;
+            font-family: 'Courier New', Courier, monospace; overflow: hidden;
+            display: flex; justify-content: center; align-items: center; flex-direction: column;
+            position: relative;
+        }
+        h1, p { text-align: center; text-shadow: 0 0 10px #FF0000, 0 0 20px #FF0000; }
+        h1 { font-size: 3em; color: #FF0000; margin-bottom: 20px; }
+        p { font-size: 1.5em; margin-bottom: 40px; color: white; max-width: 600px; }
+        .button-container { display: flex; flex-direction: column; align-items: center; z-index: 10; position: relative; margin-top: 50px; }
+        button {
+            padding: 15px 30px; font-size: 20px; background: #00FF00; color: black; border: 2px solid #00FF00;
+            margin: 10px; width: 300px; text-align: center; cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        button:hover { background: #009900; transform: scale(1.1); box-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00; }
+        .hidden { display: none; }
+        .fog {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 255, 0, 0.1);
+            pointer-events: none;
+            filter: blur(12px);
+            z-index: 5;
+        }
+        .distorted-image-container {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex;
+            justify-content: center; align-items: center; overflow: hidden;
+        }
+        .distorted-image {
+            position: relative;
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            filter: sepia(1) saturate(5) brightness(0.5) contrast(1.5) hue-rotate(90deg);
+            animation: glitch 2s infinite, vibrate 0.1s infinite;
+            transform: scale(2); /* Zoom in by double */
+            box-shadow: 0 0 20px #00FF00, 0 0 40px #00FF00, 0 0 60px #00FF00; /* Glowing effect */
+        }
+        @keyframes glitch { 
+            0% { transform: translate(0, 0); } 
+            25% { transform: translate(10px, -5px); }
+            50% { transform: translate(-15px, 10px); } 
+            75% { transform: translate(5px, -10px); } 
+            100% { transform: translate(0, 0); } 
+        }
+        @keyframes vibrate {
+            0% { transform: translate(0); }
+            20% { transform: translate(-1px, -1px); }
+            40% { transform: translate(1px, 1px); }
+            60% { transform: translate(-1px, 1px); }
+            80% { transform: translate(1px, -1px); }
+            100% { transform: translate(0); }
+        }
+        .text-overlay { position: absolute; color: #006400; font-size: 2em; font-weight: bold; text-align: center;
+            top: 50%; left: 50%; transform: translate(-50%, -50%); text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00; }
+        iframe { position: absolute; top: 0; left: 0; width: 1px; height: 1px; border: none; opacity: 0; }
+
+        /* Glitched Binary Text */
+        .binary-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 1.5em;
+            color: #00FF00;
+            text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
+            white-space: nowrap;
+            display: flex;
+            flex-direction: column;
+            animation: glitchyBinary 0.1s infinite;
+            z-index: 5; 
+        }
+        .binary-text.left {
+            left: 0;
+            width: 50%;
+            height: 100%;
+            padding-left: 10px;
+            overflow: hidden;
+        }
+        .binary-text.right {
+            right: 0;
+            width: 50%;
+            height: 100%;
+            padding-right: 10px;
+            overflow: hidden;
+        }
+        @keyframes glitchyBinary {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div id="page1">
+        <div class="fog"></div>
+        <h1>F̸̠̽R̶͙̝̖͛͌͒͠A̸̘̫̞͖̓̏͂̔͠N̸̨̨̙̻̳͐̀̚͝K̶̨͎̿͑͝͝Ḙ̸̛͓̦̬̉̍N̷͓̦̆̈́́̍S̵͈͈̬̀̓ͅǏ̵͉͠T̷̛̤̠̦̠̒͊̕͝È̸̛͓͇͓̬̆̊</h1>
+        <p>H̶͎̰̚E̵̥̞͠͠ ̸̣̆W̶̢̛̏Ĩ̶̺͕̖͐̽Ḷ̴̬̣͂̋͘L̴͙͐ ̷̨̽͂͝F̵͍̅͌̋I̵̢̐́̐N̵̡͈͊̑ͅD̶̻͋ ̶̝̻͙́̔Y̶͕͓̠̍͌͘O̷̥͚̾͌Ừ̶̤̩̻͝ ̸̝̌̇͠</p>
+        
+        <div class="binary-text left" id="binary-left"></div>
+        <div class="binary-text right" id="binary-right"></div>
+        
+        <div class="button-container">
+            <button onclick="goToLink('https://www.youtube.com/watch?v=3BFTio5296w&autoplay=1&loop=1&playlist=3BFTio5296w')">Free 1000 McDonald Points...</button>
+            <button onclick="goToLink('https://www.burgerking.com')">The Malwarific Power is a click away of a button</button>
+            <button onclick="goToLink('https://www.kfc.com')">Your Nightmares are fueled within this button</button>
+            <button onclick="goToLink('https://www.amazon.com')">If you click you're a sussy baka</button>
+            <button onclick="goToLink('https://www.dominos.com')">The pizza is cursed...</button>
+            <button onclick="goToPage(2)">Page 2... it’s too late... "It" is too quick...</button>
+            <button onclick="goToLink('https://www.ebay.com')">Bidding your life away with a click of this button...</button>
+        </div>
+    </div>
+
+    <div id="page2" class="hidden">
+        <h1>Page 2 - Z̸̼͌̂͗̉O̵̧̻͙̻̩̅͆̔́̽O̸͙̼̟̗̪͔̐̓̿̀M̷̦̈́̐̒̚E̸̠̙̘̝͆̕ ̴̜͙̩̒͛́̍D̶̡͙̏͂̐́ͅA̵̟͚̩̙͖̋́͒̐R̷̖͙̐̓̚̚K̷̢͝Ń̵̨̞́Ë̴̞̠̙́͘S̴̤̓S̷̡̛̠̅</h1>
+        <p>G̵̨̿Ē̸̠T̶̝̓ ̷͔̈́R̷͙͘E̵͙̓Ā̵̡D̸̩́Y̶̦̔ ̶͓̀T̷̘́O̴̳̒ ̸͇́F̶̦̄E̵̗͘E̵̜̕L̷͈̏ ̷̱̏F̸͉͐E̴̱͆A̵̜̕R̷̹͋!</p>
+        
+        <div class="distorted-image-container">
+            <img src="https://townsquare.media/site/442/files/2015/12/CVgnkiOUkAAAGQff.jpg?w=1200&h=0&zc=1&s=0&a=t&q=89" class="distorted-image" alt="Distorted Image">
+            <div class="text-overlay">Ả̸̞̗ͅͅṊ̷͍̭͊̄͒T̵̳̪͐ ̵̛͍L̸̖͔͚̽̓̿̿̉O̶̱̙̅̌́C̷̢̯̫̊̆̍Ķ̸͈̳̄̈͗͛ ̶̲͊̈́͌Ů̴͔̜̊̏̈́P̵̨͇͐̀ͅ ̸̧̞̮̩͈͆͊̅̿̚T̶̰̭͛H̷̛̬̟̘̗͌̆̾̄Ȩ̴̈͠͝ ̶̮̼̹͆̒̕Ḏ̵̣̖̈́̉͒̋͘ͅA̵͙͉̿̉͝R̷͔̗̹̟͠K̸̲͔͓̪͎̂̿Ǹ̴̺͕̣Ḕ̴̜̣̬S̴̡̨͔̳̣͛̋͋̏͝Ș̴̻͙̏̇͒!</div>
+        </div>
+        <div class="button-container">
+            <button onclick="goBack()">Go Back... if you dare...</button>
+        </div>
+    </div>
+
+    <iframe 
+    src="https://www.youtube.com/embed/5d88VEoiAN0?autoplay=1&loop=1&playlist=5d88VEoiAN0" 
+    frameborder="0" 
+    allow="autoplay; encrypted-media" 
+    allowfullscreen>
+</iframe>
+
+    <script>
+        function goToLink(url) { window.open(url, '_blank'); }
+        function goToPage(page) { for (let i = 1; i <= 2; i++) document.getElementById('page' + i).classList.add('hidden'); document.getElementById('page' + page).classList.remove('hidden'); }
+        function goBack() { goToPage(1); }
+
+        // Binary text for "YOU CAN'T CATCH ME"
+        const binaryMessage = "01011001 01010101 00100000 01000011 01000001 01001110 00100111 01010100 00100000 01000011 01000001 01010100 01000011 01001000 00100000 01001101 01000101 01011001 01010101 00100000 01000011 01000001 01001110 00100111 01010100 00100000 01000011 01000001 01010100 01000011 01001000 00100000 01001101 0100010101011001 01010101 00100000 01000011 01000001 01001110 00100111 01010100 00100000 01000011 01000001 01010100 01000011 01001000 00100000 01001101 0100010101011001 01010101 00100000 01000011 01000001 01001110 00100111 01010100 00100000 01000011 01000001 01010100 01000011 01001000 00100000 01001101 0100010101011001 01010101 00100000 01000011 01000001 01001110 00100111 01010100 00100000 01000011 01000001 01010100 01000011 01001000 00100000 01001101 0100010101011001 01010101 00100000 01000011 01000001 01001110 00100111 01010100 00100000 01000011 01000001 01010100 01000011 01001000 00100000 01001101 01000101";
+        
+        // Function to scramble the binary message
+        function scrambleBinary() {
+            const leftElement = document.getElementById("binary-left");
+            const rightElement = document.getElementById("binary-right");
+
+            setInterval(() => {
+                let scrambledLeft = binaryMessage.split(" ").map(() => Math.random() > 0.5 ? "1" : "0").join(" ");
+                let scrambledRight = binaryMessage.split(" ").map(() => Math.random() > 0.5 ? "1" : "0").join(" ");
+                leftElement.textContent = scrambledLeft;
+                rightElement.textContent = scrambledRight;
+            }, 150);
+        }
+
+        scrambleBinary(); // Start the binary scrambling
+    </script>
+</body>
+</html>
