@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frankenstein</title>
+    <style>
+      body {
+        margin: 0px;
+        background-color: black;
+      }
+
+      .letter {
+        color: #00ff00;
+        text-shadow: 0 0 10px #00ff00;
+        text-align: center;
+        font-size: 40px;
+        border-bottom: 4px solid #00ff00;
+        padding-bottom: 20px;
+      }
+
+      .ghost {
+        display: flex;
+        justify-content: space-between;
+      }
+      .blink {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      #ghost {
+        max-height: 150px;
+      }
+
+      .video {
+        display: flex;
+        justify-content: center;
+      }
+
+      .grave {
+        margin: 30px;
+        background-color: grey;
+        height: 280px;
+        width: 200px;
+        border-radius: 100px 100px 0 0;
+      }
+
+      .grave.active .hand {
+        opacity: 1;
+      }
+
+      .rip {
+        position: relative;
+        top: -60px;
+        font-size: 3rem;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+
+      .left {
+        transform: skewY(-8deg);
+      }
+
+      .right {
+        transform: skewY(8deg);
+      }
+
+      .hand {
+        position: absolute;
+        mix-blend-mode: multiply;
+        opacity: 1;
+        width: 150px;
+      }
+
+      .leftH {
+        left: 19%;
+        bottom: 17%;
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+      }
+
+      .rightH {
+        left: 72%;
+        bottom: 17%;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="letter">Spooky Cyber Security</header>
+    <div class="ghost">
+      <img class="blink" id="ghost" src="images/Ghost.jpg" alt="Ghost" />
+      <img class="blink" id="ghost" src="images/Ghost.jpg" alt="Ghost" />
+      <img class="blink" id="ghost" src="images/Ghost.jpg" alt="Ghost" />
+      <img class="blink" id="ghost" src="images/Ghost.jpg" alt="Ghost" />
+      <img class="blink" id="ghost" src="images/Ghost.jpg" alt="Ghost" />
+      <img class="blink" id="ghost" src="images/Ghost.jpg" alt="Ghost" />
+      <img class="blink" id="ghost" src="images/Ghost.jpg" alt="Ghost" />
+      <img class="blink" id="ghost" src="images/Ghost.jpg" alt="Ghost" />
+    </div>
+    <div class="video">
+      <div>
+        <button class="grave left button" onclick="hideShow()">
+          <h1 class="rip">RIP</h1>
+        </button>
+        <img
+          class="hand leftH"
+          id="zHand"
+          src="images/zombieHand.jpg"
+          alt="hand"
+        />
+      </div>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/kXF3VYYa5TI?si=LKG7xV_OIygtJm-Tautoplay=1"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      >
+      </iframe>
+      <div>
+        <button class="grave right button" onclick="hideShow()">
+          <h1 class="rip">RIP</h1>
+          <p>CLICK ME</p>
+        </button>
+      </div>
+    </div>
+    <script>
+      var div = document.getElementById("zHand");
+      var display = 0;
+
+      function hideShow() {
+        if (display == 1) {
+          div.style.display = "block";
+          display = 0;
+        } else {
+          div.style.display = "none";
+          display = 1;
+        }
+      }
+
+      const images = document.querySelectorAll(".blink");
+      let currentIndex = 0;
+
+      function fadeImages() {
+        images.forEach((img, index) => {
+          img.style.opacity = index === currentIndex ? 1 : 0;
+        });
+
+        currentIndex = (currentIndex + 1) % images.length;
+        const randomDelay =
+          Math.floor(Math.random() * (3000 - 1000 + 1)) + 2000;
+        setTimeout(fadeImages, randomDelay);
+      }
+
+      fadeImages();
+    </script>
+  </body>
+</html>
