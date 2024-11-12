@@ -1,0 +1,10 @@
+body {
+  background: #265b86;
+  padding: 0 24px;
+  margin: 0;
+  height: 100vh;
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
